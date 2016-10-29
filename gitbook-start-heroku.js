@@ -9,7 +9,7 @@ const GitUrlParse = require("git-url-parse");
 function initialize(directorio) {
     console.log("\nmodulo initialize");
 
-    var contenido='\ngulp.task("deploy-iaas", function () {'+ 
+    var contenido='\ngulp.task("deploy-heroku", function () {'+ 
         '\n\tvar iaas = require("gitbook-start-heroku-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         '\n\tvar iaas_ip = paquete.iaas.IP;'+
