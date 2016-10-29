@@ -10,7 +10,7 @@ function initialize(directorio) {
     console.log("\nmodulo initialize");
 
     var contenido='\ngulp.task("deploy-heroku", function () {'+ 
-        '\n\tvar iaas = require("gitbook-start-heroku-alex-moi");'+
+        '\n\tvar heroku = require("gitbook-start-heroku-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         '\n\tvar iaas_ip = paquete.iaas.IP;'+
         '\n\tvar iaas_path = paquete.iaas.PATH;'+
@@ -36,7 +36,15 @@ function initialize(directorio) {
           console.log(err);
          console.log("Tarea gulp HEROKU añadida a gulpfile")
     });
+    
     console.log("\nInstalando plugin para despliegue en HEROKU, espere por favor ...");
+    
+    
+    fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','template','Procfile'), path.join(process.cwd(), directorio , 'Procfile'),function(err){
+        if(err)
+          console.log(err);
+         console.log("Añadiendo archivo Procfile");
+    });
 
 };
 
