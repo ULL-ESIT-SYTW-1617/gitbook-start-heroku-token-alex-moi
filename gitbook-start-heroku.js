@@ -15,7 +15,7 @@ function initialize(directorio) {
         '\n\tvar iaas_ip = paquete.iaas.IP;'+
         '\n\tvar iaas_path = paquete.iaas.PATH;'+
         
-        '\n\n\tiaas.deploy(iaas_ip, iaas_path, url);'+
+        '\n\n\ heroku.deploy(iaas_ip, iaas_path, url);'+
         '\n});\n\n';
 
     
@@ -34,9 +34,9 @@ function initialize(directorio) {
     fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js'), path.join(process.cwd(), directorio , 'gulpfile.js'),function(err){
         if(err)
           console.log(err);
-         console.log("Tarea gulp añadida a gulpfile")
+         console.log("Tarea gulp HEROKU añadida a gulpfile")
     });
-    console.log("\nInstalando plugin para despliegue en iaas, espere por favor ...");
+    console.log("\nInstalando plugin para despliegue en HEROKU, espere por favor ...");
 
 };
 
