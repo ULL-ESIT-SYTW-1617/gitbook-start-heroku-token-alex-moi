@@ -58,7 +58,7 @@ function initialize(directorio) {
         console.log(stdout);
       });
         
-        
+    /*    
     var comprobar=false;
     while(comprobar == false){
         var nombre_app;
@@ -71,7 +71,7 @@ function initialize(directorio) {
                 comprobar=true;
             }
         });
-    }
+    }*/
     
 };
 
