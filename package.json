@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-alex-moi",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "Plugin deploy heroku",
   "main": "gitbook-start-heroku.js",
   "scripts": {
