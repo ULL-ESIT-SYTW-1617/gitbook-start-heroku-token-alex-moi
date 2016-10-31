@@ -25,6 +25,7 @@ Para más información sobre las opciones que permite el paquete principal, acud
 
 
 A continuación siga los siguientes pasos:
+	
 1. Autenticarse en heroku `heroku login`
 2. Acceda a la carpeta creada
 3. `npm install`
