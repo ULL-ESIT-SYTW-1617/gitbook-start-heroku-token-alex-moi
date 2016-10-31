@@ -1,10 +1,10 @@
 
-var exec = require("ssh-exec");
+//var exec = require("ssh-exec");
 var fs = require('fs');
 var path = require('path');
 const GitUrlParse = require("git-url-parse");
 var child = require("child_process");
-
+var exec = require('child_process').exec;
 
 function initialize(directorio) {
     console.log("\nmodulo initialize");
@@ -49,30 +49,6 @@ function initialize(directorio) {
           console.log(err);
       });
     
-    
-     child.exec('heroku login', function(error, stdout, stderr){
-        if(error)
-          console.log(error);
-        
-        console.log(stderr);
-        console.log(stdout);
-      });
-        
-    /*    
-    var comprobar=false;
-    while(comprobar == false){
-        var nombre_app;
-        nombre_app=prompt('Ingrese su nombre para su aplicacion:','');
-        child.exec('heroku create' + nombre_app, function(err){
-            if(err)
-            console.log("debe introducir un nombre nuevo");
-            else{
-                console.log("aplicacion creada");
-                comprobar=true;
-            }
-        });
-    }*/
-    
 };
 
 function deploy() {
@@ -89,9 +65,8 @@ function deploy() {
         
         console.log(stderr);
         console.log(stdout);
-      })
+      });
 
-    
 
    
 };
