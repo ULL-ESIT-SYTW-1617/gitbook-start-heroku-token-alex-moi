@@ -1,6 +1,6 @@
 {
-  "name": "gitbook-start-heroku-alex-moi",
-  "version": "0.1.0",
+  "name": "gitbook-start-heroku-token-alex-moi",
+  "version": "0.0.3",
   "description": "Plugin deploy heroku",
   "main": "gitbook-start-heroku.js",
   "scripts": {
@@ -8,8 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-alex-moi.git",
-    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-alex-moi.wiki.git"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.git",
+    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.wiki.git"
   },
   "keywords": [
     "gitbook",
@@ -30,20 +30,22 @@
   "bin": {
     "gitbook-start-heroku": "./gitbook-start-heroku.js"
   },
-  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-alex-moi.git#readme",
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.git#readme",
   "dependencies": {
     "ejs": "^2.5.2",
     "fs": "0.0.1-security",
     "fs-extended": "^0.2.1",
     "fs-extra": "^0.30.0",
     "gh-pages": "^0.11.0",
+    "git-url-parse": "^6.0.7",
     "gitbook-cli": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2",
+    "heroku-client": "^3.0.0-beta3",
     "minimist": "^1.2.0",
-    "simple-git": "^1.51.0",
     "path": "^0.12.7",
-    "git-url-parse": "^6.0.7"
+    "prompt": "^1.0.0",
+    "simple-git": "^1.51.0"
   },
   "devDependencies": {
     "child-process": "^1.0.2",

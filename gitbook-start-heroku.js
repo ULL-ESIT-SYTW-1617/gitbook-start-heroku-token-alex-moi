@@ -5,6 +5,10 @@ var path = require('path');
 const GitUrlParse = require("git-url-parse");
 var child = require("child_process");
 var exec = require('child_process').exec;
+var prompt = require("prompt");
+var git = require('simple-git');
+var heroku = require('heroku-client');
+
 
 function initialize(directorio) {
     console.log("\nmodulo initialize");
@@ -48,6 +52,53 @@ function initialize(directorio) {
         if(err)
           console.log(err);
       });
+      
+      
+      //pedimos por pantall el nombre de la app y el token
+      
+       prompt.get([{
+              name: 'nombre_app',
+              required: true
+            },{
+              name: 'token_app',
+              required: true
+            }], function (err, result) {
+            // 
+            // Log the results. 
+            // 
+            console.log('nombre de la app:');
+            console.log('  nombre: ' + result.nombre_app);
+            console.log('  nombre: ' + result.token_app);
+           
+           
+            //variable con el contenido de config.json
+            var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
+            
+            
+            //creamos el fichero config.json
+            var config = path.resolve(__dirname,"..",".gitbook_start",'config.json');
+            
+            
+            
+            fs.mkdirSync(path.resolve(__dirname,"..",".gitbook_start"));
+            fs.writeFileSync(config,json);
+          });
+          
+          
+          var cof = require(path.join(__dirname,"..",".gitbook_start","config.json"));
+           var pkg= require(path.join(__dirname,'package.json'));
+          
+            heroku.post('/apps',  cof.Heroku.nombre_app).then(app => {
+                
+                git()
+                  .init()
+                  .add('./*')
+                  .commit("Deploy to Heroku")
+                  .addRemote(cof.Heroku.token_app, pkg.repository.url);
+            });
+   
+          
+          
     
 };
 
