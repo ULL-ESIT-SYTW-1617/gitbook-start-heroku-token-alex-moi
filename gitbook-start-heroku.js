@@ -10,11 +10,11 @@ var prompt = require("prompt");
 var git = require('simple-git');
 var heroku = require('heroku-client');
 
-initialize("pepito");
+
 
 
 function initialize(directorio) {
-    /*console.log("\nmodulo initialize");
+    console.log("\nmodulo initialize");
 
     var contenido='\ngulp.task("deploy-heroku", function () {'+ 
         '\n\tvar heroku = require("gitbook-start-heroku-alex-moi");'+
@@ -56,7 +56,7 @@ function initialize(directorio) {
           console.log(err);
       });
       
-     */ 
+     
      
      
      
@@ -82,8 +82,8 @@ function initialize(directorio) {
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
             
-            fs.mkdirSync(path.join(__dirname,".token_heroku"));
-            fs.writeFileSync(path.join(__dirname,".token_heroku","token.json"),json);
+            fs.mkdirSync(path.join(process.cwd(), directorio,".token_heroku"));
+            fs.writeFileSync(path.join(process.cwd(), directorio,".token_heroku","token.json"),json);
             
             var token = require(path.join(__dirname,".token_heroku","token.json"));
             var pack= require(path.join(__dirname,'package.json'));
