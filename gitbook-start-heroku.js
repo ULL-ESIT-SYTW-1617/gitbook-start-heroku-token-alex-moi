@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 
 //var exec = require("ssh-exec");
 var fs = require('fs');
@@ -9,9 +10,11 @@ var prompt = require("prompt");
 var git = require('simple-git');
 var heroku = require('heroku-client');
 
+initialize("pepito");
+
 
 function initialize(directorio) {
-    console.log("\nmodulo initialize");
+    /*console.log("\nmodulo initialize");
 
     var contenido='\ngulp.task("deploy-heroku", function () {'+ 
         '\n\tvar heroku = require("gitbook-start-heroku-alex-moi");'+
@@ -53,9 +56,14 @@ function initialize(directorio) {
           console.log(err);
       });
       
-      
+     */ 
+     
+     
+     
+     
+        
       //pedimos por pantall el nombre de la app y el token
-      
+      /*
        prompt.get([{
               name: 'nombre_app',
               required: true
@@ -74,27 +82,31 @@ function initialize(directorio) {
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
             
+            fs.mkdirSync(path.join(__dirname,".gitbook_start"));
+            fs.writeFileSync("token.json",json);
             
             //creamos el fichero config.json
-            var config = path.resolve(__dirname,"..",".gitbook_start",'config.json');
+            var config = path.resolve(__dirname,"..",".gitbook_start",'token.json');
             
             
             
             fs.mkdirSync(path.resolve(__dirname,"..",".gitbook_start"));
-            fs.writeFileSync(config,json);
+            fs.writeFileSync(config.json);
           });
           
+          */
+           var token = require(path.join(__dirname,".gitbook_start","token.json"));
+           var pack= require(path.join(__dirname,'package.json'));
+           
+           var her = new heroku({ token : token.Heroku.token_app });
           
-          var cof = require(path.join(__dirname,"..",".gitbook_start","config.json"));
-           var pkg= require(path.join(__dirname,'package.json'));
-          
-            heroku.post('/apps',  cof.Heroku.nombre_app).then(app => {
+            her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
                 
                 git()
                   .init()
                   .add('./*')
                   .commit("Deploy to Heroku")
-                  .addRemote(cof.Heroku.token_app, pkg.repository.url);
+                  .addRemote('heroku', pack.repository.url);
             });
    
           
