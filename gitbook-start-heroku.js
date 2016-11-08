@@ -63,7 +63,7 @@ function initialize(directorio) {
      
         
       //pedimos por pantall el nombre de la app y el token
-      /*
+      
        prompt.get([{
               name: 'nombre_app',
               required: true
@@ -76,29 +76,19 @@ function initialize(directorio) {
             // 
             console.log('nombre de la app:');
             console.log('  nombre: ' + result.nombre_app);
-            console.log('  nombre: ' + result.token_app);
+            console.log('  token: ' + result.token_app);
            
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
             
-            fs.mkdirSync(path.join(__dirname,".gitbook_start"));
-            fs.writeFileSync("token.json",json);
+            fs.mkdirSync(path.join(__dirname,".token_heroku"));
+            fs.writeFileSync(path.join(__dirname,".token_heroku","token.json"),json);
             
-            //creamos el fichero config.json
-            var config = path.resolve(__dirname,"..",".gitbook_start",'token.json');
-            
-            
-            
-            fs.mkdirSync(path.resolve(__dirname,"..",".gitbook_start"));
-            fs.writeFileSync(config.json);
-          });
-          
-          */
-           var token = require(path.join(__dirname,".gitbook_start","token.json"));
-           var pack= require(path.join(__dirname,'package.json'));
+            var token = require(path.join(__dirname,".token_heroku","token.json"));
+            var pack= require(path.join(__dirname,'package.json'));
            
-           var her = new heroku({ token : token.Heroku.token_app });
+            var her = new heroku({ token : token.Heroku.token_app });
           
             her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
                 
@@ -109,6 +99,10 @@ function initialize(directorio) {
                   .addRemote('heroku', pack.repository.url);
             });
    
+          });
+          
+          
+        
           
           
     
