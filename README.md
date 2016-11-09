@@ -33,7 +33,7 @@ A continuación siga los siguientes pasos:
 	
 1. Acceda a la carpeta creada
 2. `npm install`
-3. `heroku git:remote -a <nombre_app`
+3. `heroku git:remote -a <nombre_app>`
 5. `gulp build`
 6. `gulp deploy-heroku`
 7. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
@@ -41,10 +41,10 @@ A continuación siga los siguientes pasos:
 
 ## Enlaces importantes
 
-*  [Página en NPM gitbook-start-heroku-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-heroku-alex-moi)
+*  [Página en NPM gitbook-start-heroku-token-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-heroku-token-alex-moi)
 *  [Página en NPM gitbook-start-alex-moi-nitesh](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh)
-*  [Repositorio GitHub](https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-alex-moi.git)
-*  [Descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicaplugin2.html)
+*  [Repositorio GitHub](https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.git)
+*  [Descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicagithubapi.html)
 *  [Campus Virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1175)
 
 ## Autores
