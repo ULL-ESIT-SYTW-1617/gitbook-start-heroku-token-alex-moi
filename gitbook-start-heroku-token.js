@@ -7,8 +7,9 @@ const GitUrlParse = require("git-url-parse");
 var child = require("child_process");
 var exec = require('child_process').exec;
 var prompt = require("prompt");
-var git = require('simple-git');
+
 var heroku = require('heroku-client');
+
 
 
 
@@ -17,7 +18,7 @@ function initialize(directorio) {
     console.log("\nmodulo initialize");
 
     var contenido='\ngulp.task("deploy-heroku", function () {'+ 
-        '\n\tvar heroku = require("gitbook-start-heroku-alex-moi");'+
+        '\n\tvar heroku = require("gitbook-start-heroku-token-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         
         '\n\n\ heroku.deploy();'+
@@ -63,7 +64,7 @@ function initialize(directorio) {
      
         
       //pedimos por pantall el nombre de la app y el token
-      
+      var git = require('simple-git')(path.join(process.cwd(),directorio));
        prompt.get([{
               name: 'nombre_app',
               required: true
@@ -85,20 +86,19 @@ function initialize(directorio) {
             fs.mkdirSync(path.join(process.cwd(), directorio,".token_heroku"));
             fs.writeFileSync(path.join(process.cwd(), directorio,".token_heroku","token.json"),json);
             
-            var token = require(path.join(__dirname,".token_heroku","token.json"));
-            var pack= require(path.join(__dirname,'package.json'));
+            var token = require(path.join(process.cwd(), directorio,".token_heroku","token.json"));
+            var pack= require(path.join(process.cwd(), directorio,'package.json'));
            
             var her = new heroku({ token : token.Heroku.token_app });
-          
-            her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
+        
+                her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
                 
-                git()
-                  .init()
-                  .add('./*')
-                  .commit("Deploy to Heroku")
-                  .addRemote('heroku', pack.repository.url);
-            });
-   
+                    git.init().addRemote('heroku', pack.repository.url).add('.').commit('Primer commit').push('heroku','master');
+                      
+                      
+                      
+                });
+
           });
           
           

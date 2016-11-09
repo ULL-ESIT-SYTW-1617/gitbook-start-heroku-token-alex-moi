@@ -1,8 +1,8 @@
 {
   "name": "gitbook-start-heroku-token-alex-moi",
-  "version": "0.0.4",
+  "version": "0.0.19",
   "description": "Plugin deploy heroku",
-  "main": "gitbook-start-heroku.js",
+  "main": "gitbook-start-heroku-token.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,7 +28,7 @@
     "url": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-alex-moi.git/issues"
   },
   "bin": {
-    "gitbook-start-heroku": "./gitbook-start-heroku.js"
+    "gitbook-start-heroku": "./gitbook-start-heroku-token.js"
   },
   "homepage": "https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.git#readme",
   "dependencies": {
