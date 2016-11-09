@@ -17,24 +17,26 @@ El paquete cuenta con dos métodos, **intialize()** y **deploy()**. El primero, 
 
 ## Funcionamiento
 
-El plugin funciona eligiendo la opción `-d heroku`. Es decir:
-* `gitbook-start-alex-moi-nitesh -c <carpeta> -d heroku`
+El plugin funciona eligiendo la opción `-d heroku-token`. Asegúrese que tiene un repositorio vacío creado. Ejemplo:
+* `gitbook-start-alex-moi-nitesh -c <carpeta> -d heroku -u <https://github.com//usuario/ejemplo.git>`
+
 
 Para más información sobre las opciones que permite el paquete principal, acuda a su documentación en [gitbook-start-alex-moi-nitesh](https://github.com/ULL-ESIT-SYTW-1617/nueva-funcionalidad-para-el-paquete-npm-plugins-alex-moi).
 
 
+El paquete nos pedirá un nombre para nuestra app y nuestro token de la api de heroku. Este token lo puede encontrar en su cuenta personal de heroku
+(Account->Baje hasta el final->Api Key)
+
+Espere un rato.
 
 A continuación siga los siguientes pasos:
 	
-1. Autenticarse en heroku `heroku login`
-2. Acceda a la carpeta creada
-3. `npm install`
-4. `git init`
+1. Acceda a la carpeta creada
+2. `npm install`
+3. `heroku git:remote -a <nombre_app`
 5. `gulp build`
-6. `heroku create <nombre_app>`
-7. `heroku git:remote -a <nombre_app>`
-8. `gulp deploy-heroku`
-9. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
+6. `gulp deploy-heroku`
+7. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
 
 
 ## Enlaces importantes

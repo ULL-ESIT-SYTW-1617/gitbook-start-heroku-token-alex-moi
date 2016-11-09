@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-token-alex-moi",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "description": "Plugin deploy heroku",
   "main": "gitbook-start-heroku-token.js",
   "scripts": {

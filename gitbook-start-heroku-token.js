@@ -50,20 +50,36 @@ function initialize(directorio) {
         if(err)
           console.log(err);
          console.log("Añadiendo archivo Procfile");
+         datos(directorio);
     });
     
      fs.copyFileSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','template','.env'), path.join(process.cwd(), directorio , '.env'),function(err){
         if(err)
           console.log(err);
+          
+          
+          
       });
       
      
      
      
      
-     
+    
         
-      //pedimos por pantall el nombre de la app y el token
+     
+          
+          
+        
+          
+          
+    
+};
+
+
+
+function datos(directorio){
+     //pedimos por pantall el nombre de la app y el token
       var git = require('simple-git')(path.join(process.cwd(),directorio));
        prompt.get([{
               name: 'nombre_app',
@@ -100,13 +116,7 @@ function initialize(directorio) {
                 });
 
           });
-          
-          
-        
-          
-          
-    
-};
+}
 
 function deploy() {
 
