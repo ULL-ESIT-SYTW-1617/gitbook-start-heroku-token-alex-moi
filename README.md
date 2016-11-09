@@ -6,7 +6,9 @@ Ofrece la posibilidad de desplegar en **heroku** nuestra aplicación.
 
 ## Instalación
 
-Este paquete se instala con el siguiente comando:
+Para utilizar el plugin es necesario instalar lo siguiente:
+```npm install -g gitbook-start-alex-moi-nitesh```
+```npm install gitbook-start-alex-moi-nitesh```
 ```npm install -g gitbook-start-heroku-token-es-alex-moi```
 
 
