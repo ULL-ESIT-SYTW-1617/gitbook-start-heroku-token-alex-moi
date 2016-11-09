@@ -15,7 +15,10 @@ var heroku = require('heroku-client');
 
 
 function initialize(directorio) {
-    console.log("\nmodulo initialize");
+   
+   
+    console.log("\n============ INSTALANDO DEPENDENCIAS ============")
+    console.log("\nEspere mientras el proceso termina ...")
 
     var contenido='\ngulp.task("deploy-heroku", function () {'+ 
         '\n\tvar heroku = require("gitbook-start-heroku-token-alex-moi");'+
@@ -25,7 +28,7 @@ function initialize(directorio) {
         '\n});\n\n';
 
     
-    fs.existsSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js')) ? console.log("Existe") : console.log("No existe");
+    fs.existsSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js')) ? console.log("") : console.log("");
     
     
     //añadimos la tarea
@@ -33,23 +36,23 @@ function initialize(directorio) {
         if (err) {
             return console.error(err);
         }
-        console.log("Añadiendo tarea gulp")
+        
     });
     
     //copiamos gulpfile a nuestro directorio
     fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js'), path.join(process.cwd(), directorio , 'gulpfile.js'),function(err){
         if(err)
           console.log(err);
-         console.log("Tarea gulp HEROKU añadida a gulpfile")
+        
     });
     
-    console.log("\nInstalando plugin para despliegue en HEROKU, espere por favor ...");
+    
     
     
     fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','template','Procfile'), path.join(process.cwd(), directorio , 'Procfile'),function(err){
         if(err)
           console.log(err);
-         console.log("Añadiendo archivo Procfile");
+         console.log("Mientras, puede ir rellenando sus datos");
          datos(directorio);
     });
     
@@ -91,7 +94,7 @@ function datos(directorio){
             // 
             // Log the results. 
             // 
-            console.log('nombre de la app:');
+            console.log('Sus datos son:');
             console.log('  nombre: ' + result.nombre_app);
             console.log('  token: ' + result.token_app);
            
@@ -116,6 +119,7 @@ function datos(directorio){
                 });
 
           });
+          
 }
 
 function deploy() {
