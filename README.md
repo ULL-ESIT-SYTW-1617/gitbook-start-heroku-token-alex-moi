@@ -7,7 +7,7 @@ Ofrece la posibilidad de desplegar en **heroku** nuestra aplicación.
 ## Instalación
 
 Este paquete se instala con el siguiente comando:
-```npm install -g gitbook-start-heroku-es-alex-moi```
+```npm install -g gitbook-start-heroku-token-es-alex-moi```
 
 
 ## Descripción del paquete
@@ -18,7 +18,7 @@ El paquete cuenta con dos métodos, **intialize()** y **deploy()**. El primero, 
 ## Funcionamiento
 
 El plugin funciona eligiendo la opción `-d heroku-token`. Asegúrese que tiene un repositorio vacío creado. Ejemplo:
-* `gitbook-start-alex-moi-nitesh -c <carpeta> -d heroku -u <https://github.com//usuario/ejemplo.git>`
+* `gitbook-start-alex-moi-nitesh -c <carpeta> -d heroku-token -u <https://github.com//usuario/ejemplo.git>`
 
 
 Para más información sobre las opciones que permite el paquete principal, acuda a su documentación en [gitbook-start-alex-moi-nitesh](https://github.com/ULL-ESIT-SYTW-1617/nueva-funcionalidad-para-el-paquete-npm-plugins-alex-moi).
