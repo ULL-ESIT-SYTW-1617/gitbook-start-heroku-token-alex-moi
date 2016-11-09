@@ -37,7 +37,7 @@ A continuación siga los siguientes pasos:
 2. `npm install`
 3. `heroku git:remote -a <nombre_app>`
 5. `gulp build`
-6. `gulp deploy-heroku`
+6. `gulp deploy-heroku-token`
 7. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
 
 

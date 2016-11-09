@@ -20,7 +20,7 @@ function initialize(directorio) {
     console.log("\n============ INSTALANDO DEPENDENCIAS ============")
     console.log("\nEspere mientras el proceso termina ...")
 
-    var contenido='\ngulp.task("deploy-heroku", function () {'+ 
+    var contenido='\ngulp.task("deploy-heroku-token", function () {'+ 
         '\n\tvar heroku = require("gitbook-start-heroku-token-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         
