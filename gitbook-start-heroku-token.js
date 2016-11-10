@@ -1,13 +1,11 @@
 #! /usr/bin/env node
 
-//var exec = require("ssh-exec");
+
 var fs = require('fs');
 var path = require('path');
-const GitUrlParse = require("git-url-parse");
 var child = require("child_process");
 var exec = require('child_process').exec;
 var prompt = require("prompt");
-
 var heroku = require('heroku-client');
 
 
@@ -28,54 +26,16 @@ function initialize(directorio) {
         '\n});\n\n';
 
     
-    fs.existsSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js')) ? console.log("") : console.log("");
-    
-    
     //añadimos la tarea
-    fs.writeFileSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js'), contenido,  {'flag':'a'},  function(err) {
+    fs.writeFileSync(path.resolve(process.cwd(),'gulpfile.js'), contenido,  {'flag':'a'},  function(err) {
         if (err) {
             return console.error(err);
         }
         
+           
     });
     
-    //copiamos gulpfile a nuestro directorio
-    fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','gulpfile.js'), path.join(process.cwd(), directorio , 'gulpfile.js'),function(err){
-        if(err)
-          console.log(err);
-        
-    });
-    
-    
-    
-    
-    fs.copyFile(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','template','Procfile'), path.join(process.cwd(), directorio , 'Procfile'),function(err){
-        if(err)
-          console.log(err);
-         console.log("Mientras, puede ir rellenando sus datos");
-         datos(directorio);
-    });
-    
-     fs.copyFileSync(path.join(process.cwd(), 'node_modules','gitbook-start-alex-moi-nitesh','template','.env'), path.join(process.cwd(), directorio , '.env'),function(err){
-        if(err)
-          console.log(err);
-          
-          
-          
-      });
-      
-     
-     
-     
-     
-    
-        
-     
-          
-          
-        
-          
-          
+    datos(directorio);
     
 };
 
@@ -83,13 +43,16 @@ function initialize(directorio) {
 
 function datos(directorio){
      //pedimos por pantall el nombre de la app y el token
-      var git = require('simple-git')(path.join(process.cwd(),directorio));
+      var git = require('simple-git')(path.join(process.cwd()));
+      console.log("hfhfhfhfhf   " + path.join(process.cwd()));
        prompt.get([{
               name: 'nombre_app',
               required: true
             },{
               name: 'token_app',
               required: true
+            },{
+                name: 'repositorio'
             }], function (err, result) {
             // 
             // Log the results. 
@@ -97,22 +60,22 @@ function datos(directorio){
             console.log('Sus datos son:');
             console.log('  nombre: ' + result.nombre_app);
             console.log('  token: ' + result.token_app);
-           
+           console.log('  repositorio: ' + result.repositorio);
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
             
-            fs.mkdirSync(path.join(process.cwd(), directorio,".token_heroku"));
-            fs.writeFileSync(path.join(process.cwd(), directorio,".token_heroku","token.json"),json);
+            fs.mkdirSync(path.join(process.cwd(), ".token_heroku"));
+            fs.writeFileSync(path.join(process.cwd(),".token_heroku","token.json"),json);
             
-            var token = require(path.join(process.cwd(), directorio,".token_heroku","token.json"));
-            var pack= require(path.join(process.cwd(), directorio,'package.json'));
+            var token = require(path.join(process.cwd(), ".token_heroku","token.json"));
+            var pack= require(path.join(process.cwd(), 'package.json'));
            
             var her = new heroku({ token : token.Heroku.token_app });
         
                 her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
                 
-                    git.init().addRemote('heroku', pack.repository.url).add('.').commit('Primer commit').push('heroku','master');
+                    git.init().addRemote('heroku', result.repositorio).add('.').commit('Primer commit').push('heroku','master');
                       
                       
                       
