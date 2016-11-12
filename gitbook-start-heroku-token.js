@@ -75,7 +75,7 @@ function datos(directorio){
         
                 her.post('/apps', {body: {name: token.Heroku.nombre_app}} ).then(app => {
                 
-                    git.init().addRemote('heroku', result.repositorio).add('.').commit('Primer commit').push('heroku','master');
+                    //git.init().addRemote('heroku', result.repositorio).add('.').commit('Primer commit').push('heroku','master');
                       
                       
                       
